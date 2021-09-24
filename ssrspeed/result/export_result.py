@@ -36,6 +36,8 @@ class ExportResult(object):
 		self.__hide_stspeed = not config["StSpeed"]
 		self.__colors = {}
 		self.__colorSpeedList = []
+		self.__colorPingList = []
+		self.__colorGPingList = []
 		self.__font = ImageFont.truetype(self.__config["font"],18)
 		self.__timeUsed = "N/A"
 	#	self.setColors()
@@ -65,6 +67,10 @@ class ExportResult(object):
 		sorter = Sorter()
 		result = sorter.sortResult(result,sortMethod)
 		self.__exportAsPng(result)
+
+		from plot import exportAsPlot
+		filename = "./results/" + time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()) + "-P.png"
+		exportAsPlot(result, filename)
 
 	def exportWpsResult(self, result, exportType = 0):
 		if not exportType:
