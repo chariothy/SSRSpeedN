@@ -20,8 +20,8 @@
 	},
 	"ping": true,
 	"gping": true,
-	"speed": true,
-	"StSpeed": true,
+	"speed": false,
+	"StSpeed": false,
 	"netflix": true,
 	"web": {
 		"listen": "127.0.0.1",
