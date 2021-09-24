@@ -2,7 +2,7 @@
     <img src="https://i.jpg.dog/file/jpg-dog/9160396e547d9abde7ec3199c571aa47.png" alt="SSRSpeedN" width="240">
 </h1>
 <p align="center">
-Batch speed measuring tool based on Shadowsocks(R) and V2Ray
+Batch speed measuring tool based on Shadowsocks(R) and V2Ray （备份防BAN）
 </p>
 <p align="center">
   <a href="https://github.com/PauperZ/SSRSpeedN/tags"><img src="https://img.shields.io/github/tag/PauperZ/SSRSpeedN.svg"></a>
@@ -67,7 +67,7 @@ Linux 依赖
 ## 致谢
 
 - 原作者
-  - [NyanChanMeow](https://github.com/NyanChanMeow)
+  - [被历史遗忘](https://github.com)
 - beta版测试
   - [ChenBilly](https://t.me/ChenBilly)
   - [Duang](https://t.me/duang11212)
