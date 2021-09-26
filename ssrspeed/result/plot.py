@@ -7,10 +7,6 @@
 import json
 import re
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 REG_RATE = re.compile(r'\|?(\d\.?\d?)x\|?')
 
 def get_color(remark:str)->str:
@@ -38,7 +34,18 @@ def load_result():
         return json.load(fp)
         
 # %%
-def exportAsPlot(result=None, pic_path=None):
+def exportAsMPlot(result=None, pic_path=None):
+    """Matplotlib生成可视化，后被plotly代替
+        此处留做技术文档备忘
+
+    Args:
+        result (tuple, optional): [description]. Defaults to None.
+        pic_path (str, optional): [description]. Defaults to None.
+    """
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
     if result is None:
         result = load_result()
     remarks = ['|'.join(x['remarks'].split('|')[1:]) for x in result]
@@ -61,3 +68,29 @@ def exportAsPlot(result=None, pic_path=None):
         plt.savefig(pic_path)
     else:
         plt.show()
+
+# %%
+def exportAsPlot(result=None, pic_path=None):
+    if result is None:
+        result = load_result()
+    remarks = ['|'.join(x['remarks'].split('|')[1:]) for x in result]
+    pings = [x['ping'] for x in result]
+    gpings = [x['gPing'] for x in result]
+    dspeeds = [x['dspeed'] for x in result]
+    maxspeeds = [x['maxDSpeed'] for x in result]
+    colors = [get_color(x['remarks']) for x in result]
+    
+    import plotly.graph_objects as go
+    fig = go.Figure()
+    fig.add_trace(go.Bar(x=remarks, y=gpings, marker_color=colors, name='Google ping'))
+    fig.add_trace(go.Bar(x=remarks, y=pings, name='Ping'))
+    fig.update_traces(opacity=0.8)
+    fig.update_layout(barmode='overlay', legend=dict(x=0.01, y=0.99))
+    
+    if pic_path:
+        fig.write_html(pic_path)
+    fig.show()
+        
+        
+if __name__ == '__main__':
+    exportAsPlot()

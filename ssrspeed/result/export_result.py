@@ -68,8 +68,9 @@ class ExportResult(object):
 		result = sorter.sortResult(result,sortMethod)
 		self.__exportAsPng(result)
 
+		#Added by chariothy
 		from plot import exportAsPlot
-		filename = "./results/" + time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()) + "-P.png"
+		filename = "./results/" + time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()) + ".html"
 		exportAsPlot(result, filename)
 
 	def exportWpsResult(self, result, exportType = 0):
