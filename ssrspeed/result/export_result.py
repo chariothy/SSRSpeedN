@@ -69,7 +69,7 @@ class ExportResult(object):
 		self.__exportAsPng(result)
 
 		#Added by chariothy
-		from plot import exportAsPlot
+		from .plot import exportAsPlot
 		filename = "./results/" + time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()) + ".html"
 		exportAsPlot(result, filename)
 

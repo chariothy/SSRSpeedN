@@ -74,7 +74,6 @@ if (__name__ == "__main__"):
 	print("****** Import Hint 重要提示******")
 	print("ChenBilly yyds！")
 	print("*********************************")
-	input("Press ENTER to conitnue or Crtl+C to exit.")
 
 	if (options.debug):
 		DEBUG = options.debug
@@ -237,13 +236,6 @@ if (__name__ == "__main__"):
 	)
 	sc.clean_result()
 
-	if not SKIP_COMFIRMATION:
-		ans = input("Before the test please confirm the nodes,Ctrl-C to exit. (Y/N)")
-		if ans.upper() == "Y":
-			pass
-		else:
-			sys.exit(0)
-	
 	sc.start_test(options.use_ssr_cs)
 
 
